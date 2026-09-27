@@ -1,0 +1,171 @@
+/* Shared NGO navigation, matching the Pickup Status sidebar. */
+.ngo-sidebar,
+.sidebar.ngo-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 230px;
+    height: 100vh;
+    padding: 25px 12px;
+    overflow-y: auto;
+    background: #064d3b;
+    color: #fff;
+    z-index: 1000;
+}
+
+.ngo-sidebar .logo-area {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ngo-sidebar .logo-icon {
+    width: auto;
+    height: auto;
+    margin: 0 0 8px;
+    font-size: 42px;
+}
+
+.ngo-sidebar .logo-area h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 20px;
+}
+
+.ngo-sidebar .logo-area p {
+    margin: 7px 0 0;
+    color: #d8eee5;
+    font-size: 13px;
+}
+
+.ngo-sidebar .menu {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.ngo-sidebar .menu li {
+    margin-bottom: 5px;
+}
+
+.ngo-sidebar .menu a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 13px;
+    margin-bottom: 0;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.ngo-sidebar .menu a:hover {
+    background: #0b7458;
+}
+
+.ngo-sidebar .menu a.active {
+    background: #0b9b6c;
+    font-weight: bold;
+}
+
+.ngo-sidebar .menu a span:not(.menu-notification):not(.notification) {
+    white-space: nowrap;
+}
+
+.ngo-sidebar .menu i {
+    width: 22px;
+    flex: 0 0 22px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.ngo-sidebar .menu-notification,
+.ngo-sidebar .notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-left: auto;
+    border-radius: 50%;
+    background: #ef4444;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.ngo-sidebar .sidebar-bottom {
+    position: absolute;
+    right: 12px;
+    bottom: 25px;
+    left: 12px;
+    padding: 17px 10px;
+    border: 1px solid #168a68;
+    border-radius: 8px;
+    color: #d9f4e9;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.ngo-sidebar .sidebar-bottom i {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 27px;
+}
+
+.ngo-sidebar ~ .main {
+    margin-left: 230px !important;
+    width: calc(100% - 230px) !important;
+    max-width: none !important;
+}
+
+.ngo-sidebar ~ .main .topbar {
+    left: 230px !important;
+}
+
+.ngo-sidebar ~ .main > .container,
+.ngo-sidebar ~ .main .container {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+@media (max-width: 700px) {
+    .ngo-sidebar,
+    .sidebar.ngo-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+    }
+
+    .ngo-sidebar .sidebar-bottom {
+        position: static;
+        margin-top: 20px;
+    }
+
+    .ngo-content {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: auto !important;
+    }
+}
+
+.ngo-content {
+    margin-left: 230px !important;
+    margin-right: 30px !important;
+    width: auto !important;
+}
+
+@media (max-width: 700px) {
+    .ngo-content {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: auto !important;
+    }
+
+    .ngo-sidebar ~ .main {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,226 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7f6;
+    color:#222;
+}
+
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar{
+    height:70px;
+    background:white;
+    border-bottom:1px solid #ddd;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 35px;
+
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:10;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#168a45;
+}
+
+.logo span{
+    color:#222;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:bold;
+}
+
+.user-circle{
+    width:35px;
+    height:35px;
+
+    border-radius:50%;
+
+    background:#168a45;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+/* =========================
+   NOTIFICATION
+   ========================= */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.notification{
+    position:relative;
+    text-decoration:none;
+    font-size:21px;
+    color:#333;
+}
+
+.notification-count{
+    position:absolute;
+    top:-7px;
+    right:-8px;
+
+    width:17px;
+    height:17px;
+
+    background:#e53935;
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:10px;
+}
+
+/* Header / Sidebar additions */
+.notification-link{
+    display:flex !important;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.notification-badge{
+    min-width:20px;
+    height:20px;
+
+    padding:0 6px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#e53935;
+    color:white;
+
+    border-radius:50%;
+
+    font-size:11px;
+    font-weight:bold;
+
+    line-height:20px;
+}
+
+.notification-link{ /* keep notification related styles */
+    display:flex !important;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.sidebar .menu a.active{ background:#168a45; color:white; border-left:4px solid #168a45; }
+
+
+/* =========================
+   SIDEBAR
+   ========================= */
+
+.sidebar{
+    width:230px;
+
+    position:fixed;
+
+    top:70px;
+    bottom:0;
+    left:0;
+
+    background:#123d28;
+
+    padding:25px 14px;
+}
+
+.menu-title{
+    color:#91aa9d;
+
+    font-size:11px;
+
+    margin:10px;
+}
+
+.menu a{
+    display:block;
+
+    padding:12px 14px;
+
+    margin-bottom:5px;
+
+    color:#dceee3;
+
+    text-decoration:none;
+
+    border-radius:7px;
+
+    font-size:14px;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:#168a45;
+    color:white;
+}
+
+.logout{
+    color:#ffb7b7 !important;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media(max-width:800px)
+{
+    .sidebar{
+        width:70px;
+    }
+
+    .menu-title{
+        display:none;
+    }
+
+    .menu a{
+        font-size:0;
+        text-align:center;
+    }
+
+    .user-name{
+        display:none;
+    }
+}
+
+
+@media(max-width:550px)
+{
+    .navbar{
+        padding:0 18px;
+    }
+}
