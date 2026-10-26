@@ -1,0 +1,4 @@
+# Uploaded files are data only — never run them as PHP
+<FilesMatch "\.(php|phtml|phar)$">
+    Require all denied
+</FilesMatch>

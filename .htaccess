@@ -1,0 +1,7 @@
+DirectoryIndex index.php
+Options -Indexes
+
+# Only index.php, assets/ and uploads/ are public.
+# app/, config/ and database/ are blocked from the browser.
+RewriteEngine On
+RewriteRule ^(app|config|database)(/|$) - [F,L]

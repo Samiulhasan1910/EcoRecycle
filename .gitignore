@@ -1,4 +1,13 @@
+# macOS / editors
 .DS_Store
-__MACOSX/
-._*
-.env
+.vscode/
+.idea/
+
+# Private verification files (NGO documents, driving licenses)
+uploads/ngo_documents/*
+uploads/delivery_documents/*
+!uploads/ngo_documents/.gitkeep
+!uploads/delivery_documents/.gitkeep
+
+# Full local database dump with real data (use database/ecocycle.sql instead)
+database/project.sql

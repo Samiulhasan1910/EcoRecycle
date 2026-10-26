@@ -1,108 +1,313 @@
-# EcoRecycle
+<div align="center">
 
-EcoRecycle is a PHP and MySQL web application for buying, selling, and donating reusable items. It connects community members, NGOs, and delivery personnel through separate dashboards and item-management workflows.
+# ♻️ EcoCycle
 
-## Features
+### A Sustainable Marketplace for Reuse, Resale, Donation & Recycling
 
-- User registration, login, and profile management.
-- Item listings for buying, selling, and donation, with image uploads.
-- Wanted posts and offers for requested items.
-- NGO donation requests, accepted donations, and pickup coordination.
-- Delivery job handling, availability settings, charge responses, and progress updates.
-- Notifications and transaction records.
-- Administrative management of users, items, requests, NGOs, and delivery personnel.
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-MariaDB-4479A1?logo=mysql&logoColor=white)
+![Architecture](https://img.shields.io/badge/Architecture-MVC-2ea44f)
+![XAMPP](https://img.shields.io/badge/Server-XAMPP-FB7A24?logo=xampp&logoColor=white)
+![Course](https://img.shields.io/badge/CSC%203215-Web%20Technologies-blue)
 
-## User Roles
+**A group project built with PHP (MVC), MySQL, HTML, CSS and JavaScript for the Web Technologies course at AIUB**
 
-| Role | Main responsibilities |
-| --- | --- |
-| User | Browse items, create listings, buy or donate items, and manage requests and offers. |
-| NGO | Manage donation requests and coordinate pickups. |
-| Delivery personnel | Handle delivery jobs and update delivery progress. |
-| Admin | Manage platform records and account verification. |
+[About](#-about-the-project) •
+[Features](#-features) •
+[Installation](#-installation) •
+[Project Structure](#%EF%B8%8F-project-structure) •
+[Team](#-academic-information)
 
-## Technologies
+</div>
+
+---
+
+## 📖 About The Project
+
+Each year, many usable household and office items are thrown away because there is no simple way to sell,
+donate or recycle them nearby. At the same time, people, NGOs and recycling agents are looking for exactly
+these items.
+
+**EcoCycle** connects them. Users post an item **for sale** or **for donation**, others search and filter items
+in their area, make offers or requests, and the item reaches its new owner through a built-in **delivery
+workflow**. NGOs can claim donations, delivery men handle pickups, and an admin panel keeps everything running.
+
+### 🎯 Project Objectives
+
+- Combine **resale, donation and recycling** in one localized platform
+- Support four roles: **User, NGO, Delivery Man, Admin**
+- Track every item from *"not needed anymore"* to *"reused, donated or delivered"*
+- Apply the **MVC architecture** with a front controller and router in plain PHP
+
+### 🔍 Background Study
+
+| Existing solution | What is missing |
+|---|---|
+| General marketplaces (Facebook Marketplace, classified ads) | No donation / recycling flow, no link to verified organizations |
+| Donation-only platforms | No resale or recycling |
+| Municipal / informal recycling | Not connected to an online request & delivery system |
+
+EcoCycle brings all three streams together with role-based access and a tracked delivery lifecycle.
+
+---
+
+## ✨ Features
+
+### 👤 User
+- Register and log in (with "remember my email")
+- **Post items** for *Sell* (price + Bkash / Nagad number) or *Donate* (optionally to a chosen NGO)
+- **Browse & live search** items and wanted posts by keyword, category and location
+- **Request donated items**; the owner accepts or rejects from notifications
+- **Buy items** through a simulated Bkash / Nagad payment
+- **Wanted posts**: ask for an item; other users send offers with a picture and price
+- Accept an offer → pay → a delivery job opens automatically
+- **Delivery tracking**: see the assigned delivery man and accept / reject the delivery charge
+- Transaction history, notifications and profile management
+
+### 🏢 NGO
+- Dashboard with donation statistics and recent notifications
+- Accept or reject donations sent to the NGO
+- Request public donations from donors
+- Create the NGO's own donation posts
+- Assign accepted donations to available delivery men and follow pickup status
+- Accept / reject delivery charges, manage the NGO profile
+
+### 🚚 Delivery Man
+- Dashboard with open jobs; accept or reject a job
+- Propose a delivery charge to the receiver
+- Update progress: **Arrived at Pickup → Picked Up → Completed**
+- Set availability (Available / Busy / Offline)
+- Delivery history with status filter and an earnings summary
+
+### 🛡️ Admin
+- Dashboard with platform-wide counts and recent activity
+- **User management**: search, edit, delete
+- **NGO verification**: approve / reject, download verification documents
+- **Delivery staff management**: approve, block / unblock, set availability, add staff
+- **Item / post moderation**: approve, reject, change status, delete
+- **Request monitoring**: approve, reject, assign delivery staff, cancel
+
+### 🔐 Security
+- All database queries use **prepared statements** (no SQL injection)
+- Passwords stored with `password_hash()`; old plain-text passwords are upgraded on login
+- **CSRF tokens** on delivery and charge actions
+- Role-based access checks in every controller
+- `app/`, `config/` and `database/` are blocked from the browser; PHP cannot run inside `uploads/`
+
+---
+
+## 🛠️ Technologies Used
 
 | Component | Technology |
-| --- | --- |
-| Frontend | HTML, CSS, JavaScript |
-| Backend | PHP |
-| Database | MySQL / MariaDB, accessed through MySQLi |
-| Local server | XAMPP (Apache and MySQL/MariaDB) |
-| Database administration | phpMyAdmin |
+|---|---|
+| Backend | PHP 8.2 (custom MVC, no framework) |
+| Database | MySQL / MariaDB (mysqli, prepared statements) |
+| Frontend | HTML5, CSS3, JavaScript (AJAX for login, register and live search) |
+| Icons | Font Awesome |
+| Server | Apache via XAMPP |
+| Tools | VS Code, phpMyAdmin, Git & GitHub |
 
-## Local Setup
+---
 
-### 1. Place the project in XAMPP
+## 📋 Requirements
 
-Install XAMPP with PHP and MySQL/MariaDB. Clone the repository into the `htdocs` directory:
+- **XAMPP** (Apache + MySQL) with **PHP 8.1 or newer**
+- Apache `mod_rewrite` and `AllowOverride All` (both are on in a default XAMPP install)
+- A modern web browser
+
+---
+
+## 🚀 Installation
+
+### Step 1: Clone the repository
+
+Clone it into XAMPP's `htdocs` folder:
 
 ```bash
-cd C:\xampp\htdocs
-git clone https://github.com/Samiulhasan1910/EcoRecycle.git
+cd /Applications/XAMPP/xamppfiles/htdocs      # macOS
+# cd C:\xampp\htdocs                          # Windows
+git clone https://github.com/Samiulhasan1910/EcoRecycle.git ecocycle
 ```
 
-For this cloned layout, `login.php` should be located at `C:\xampp\htdocs\EcoRecycle\login.php`.
-
-### 2. Start the services
+### Step 2: Start XAMPP
 
 Open the XAMPP Control Panel and start **Apache** and **MySQL**.
 
-### 3. Import the database
+### Step 3: Import the database
 
-1. Open `http://localhost/phpmyadmin/`.
-2. Create a database named `project` with a UTF-8-compatible collation such as `utf8mb4_general_ci`.
-3. Select the database and open the **Import** tab.
-4. Select `project (5).sql` from the project directory and run the import.
+1. Open `http://localhost/phpmyadmin`
+2. Create a database named **`project`**
+3. Select it → **Import** → choose `database/ecocycle.sql` → **Go**
 
-### 4. Check the database connection
+### Step 4: Check the database settings
 
-The supplied `db.php` uses the following local development settings:
+Edit `config/config.php` if your MySQL user or password is different:
 
 ```php
-$conn = mysqli_connect("localhost", "root", "", "project");
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'project');
 ```
 
-Update the host, username, password, or database name if your local configuration differs.
+### Step 5: Open the website
 
-### 5. Open the application
-
-For the cloned layout above, visit:
-
-```text
-http://localhost/EcoRecycle/login.php
+```
+http://localhost/ecocycle/
 ```
 
-If you extracted the ZIP and kept the nested `EcoRecycle/web/web` layout, use:
+### 🔑 Demo Login
 
-```text
-http://localhost/EcoRecycle/web/web/login.php
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@ecocycle.com` | `admin123` |
+
+Register new accounts for the other roles. NGO and Delivery Man accounts need **admin approval** before they can log in.
+
+---
+
+## 🏗️ Project Structure
+
+```
+ecocycle/
+├── index.php                  # Front controller: every request starts here
+├── .htaccess                  # Blocks app/, config/, database/
+├── config/
+│   ├── config.php             # Database credentials, default route
+│   └── routes.php             # URL → Controller@method table
+├── app/
+│   ├── core/
+│   │   ├── Router.php         # Reads ?url= and calls the controller
+│   │   ├── Controller.php     # view(), json(), access guards
+│   │   ├── Model.php          # Prepared-statement helpers, transactions
+│   │   ├── Database.php       # Shared mysqli connection
+│   │   └── helpers.php        # url(), redirect(), e(), csrf_token() ...
+│   ├── controllers/           # 12 controllers (Auth, Item, Ngo, Delivery, Admin ...)
+│   ├── models/                # 13 models: all SQL lives here
+│   └── views/                 # HTML templates only
+│       ├── layouts/           # Shared header and sidebars
+│       ├── auth/  user/  items/  requests/  wanted/  offers/
+│       └── ngo/   delivery/  admin/  errors/
+├── assets/css/                # style.css, style_delivery.css, ngo_sidebar.css
+├── uploads/                   # Item and offer images
+└── database/ecocycle.sql      # Database dump
 ```
 
-Register an account through `register.php`. NGO and delivery accounts may require administrator approval before their workflows are available. Keep the `uploads` directory and allow the local web server to write uploaded files there.
+---
 
-## Important Files
+## 🧩 How MVC Works Here
 
-| File or directory | Purpose |
-| --- | --- |
-| `login.php` / `login_process.php` | Login interface and processing |
-| `register.php` / `register_process.php` | Account registration |
-| `db.php` | Database connection |
-| `dashboard.php` | User dashboard |
-| `admin_dashboard.php` | Administrator dashboard |
-| `ngo_dashboard.php` | NGO dashboard |
-| `delivery_dashboard.php` | Delivery dashboard |
-| `delivery_workflow.php` | Shared delivery workflow logic |
-| `project (5).sql` | Supplied database dump |
-| `uploads/` | Uploaded images and documents |
+Every page is opened through `index.php` with a route, for example `index.php?url=items/sell`.
 
-## Development Notes
+```
+Browser ──► index.php ──► Router ──► Controller ──► Model ──► MySQL
+                                         │
+                                         └──► View (HTML) ──► Browser
+```
 
-- This repository is an academic group project intended for local demonstration.
-- Some existing interface labels use the name **EcoCycle**; the repository name is **EcoRecycle**.
-- PHP pages require a PHP-capable server and a database; opening the files directly in a browser will not run the application.
-- The supplied SQL dump must match the application code. If a workflow reports missing tables or columns, import the current database export from the working development environment.
+Example: **My Sell Items** page
 
-## Repository
+| Layer | File | Job |
+|---|---|---|
+| Route | `config/routes.php` | `'items/sell' => 'ItemController@sell'` |
+| Controller | `app/controllers/ItemController.php` | Checks login, asks the model for data, picks the view |
+| Model | `app/models/Item.php` | `SELECT * FROM items WHERE user_id = ? AND type = ?` |
+| View | `app/views/items/sell.php` | Shows the items as cards |
 
-[Samiulhasan1910/EcoRecycle](https://github.com/Samiulhasan1910/EcoRecycle)
+### Main Routes
+
+| Module | Routes |
+|---|---|
+| Auth | `auth/login`, `auth/register`, `auth/logout` |
+| User | `dashboard`, `profile`, `notifications` |
+| Items | `items/create`, `items/mine`, `items/browse`, `items/view`, `items/edit` |
+| Requests & Payment | `requests/mine`, `transactions`, `payment` |
+| Wanted & Offers | `wanted/create`, `wanted/view`, `offers/create`, `offers/view` |
+| NGO | `ngo/dashboard`, `ngo/donation-requests`, `ngo/accepted-donations`, `ngo/pickups` |
+| Delivery | `delivery/dashboard`, `delivery/jobs`, `delivery/history`, `delivery/track` |
+| Admin | `admin/dashboard`, `admin/users`, `admin/ngos`, `admin/delivery-men`, `admin/items`, `admin/requests` |
+
+The full list is in [`config/routes.php`](config/routes.php).
+
+### Adding a New Page
+
+1. Add a route: `'items/report' => 'ItemController@report'`
+2. Add the method to the controller and load data with `$this->model('Item')`
+3. Render it: `$this->view('items/report', ['rows' => $rows])`
+4. Link to it with `<?php echo url('items/report'); ?>`
+
+---
+
+## 🔄 Item Lifecycle
+
+```
+Sell:     Post item ──► Buyer pays ──► Item "Sold" ──► Delivery job opens ──► Delivered
+Donate:   Post item ──► User / NGO requests ──► Owner accepts ──► Delivery job opens ──► Delivered
+Wanted:   Post wanted ──► Others send offers ──► Accept offer ──► Pay ──► Delivered
+
+Delivery: Open ──► Accepted ──► Charge proposed ──► Charge accepted
+               ──► Arrived at pickup ──► Picked up ──► Completed
+```
+
+---
+
+## 🎓 Academic Information
+
+### Course Details
+
+| | |
+|---|---|
+| **University** | American International University-Bangladesh (AIUB) |
+| **Faculty** | Faculty of Science and Technology |
+| **Department** | Department of Computer Science |
+| **Course** | CSC 3215: Web Technologies |
+| **Semester** | Summer 2025-26 |
+| **Section** | Y |
+| **Group** | 02 |
+
+### Project Team
+
+| SL | Name | Student ID | Role | GitHub |
+|---|---|---|---|---|
+| 1 | Sadia Ahmed | 23-55053-3 | Group Leader | [@sadiaahmed9735](https://github.com/sadiaahmed9735) |
+| 2 | Orpyta Karmokar Aupy | 23-55051-3 | Member | — |
+| 3 | Samiul Hasan | 23-55331-3 | Member | [@Samiulhasan1910](https://github.com/Samiulhasan1910) |
+| 4 | Mahomuda Patowary | 23-51156-1 | Member | — |
+| 5 | Md. Borhan Hosen | 22-48260-2 | Member | — |
+
+**Course Teacher:** Tofayet Sultan
+
+> 📌 Team repository: [sadiaahmed9735/EcoCycle](https://github.com/sadiaahmed9735/EcoCycle)
+
+---
+
+## 🐛 Known Limitations
+
+- Payments are **simulated** (no real Bkash / Nagad gateway)
+- No email verification or password reset yet
+- URLs use the `index.php?url=...` format (no pretty URLs)
+- Built and tested on XAMPP only
+
+## 🔮 Future Enhancements
+
+- Real payment gateway integration
+- Email verification and password reset
+- Map-based pickup locations
+- Ratings and reviews for users and delivery men
+- Recycling-center role with drop-off points
+- Mobile-friendly design and a mobile app
+
+---
+
+## 📄 License
+
+This project was created for educational purposes as part of the **CSC 3215: Web Technologies** course at AIUB.
+Feel free to use it for learning with proper attribution.
+
+<div align="center">
+
+⭐ If you found this project helpful, please give it a star! ⭐
+
+Made with ❤️ by Group 02
+
+</div>
